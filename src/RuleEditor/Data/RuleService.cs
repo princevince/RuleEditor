@@ -15,8 +15,7 @@ namespace RuleEditor.Data
         }
 
         public async Task<List<Rule>> GetRules() {
-            var x = context.Rules;
-            return await Task.FromResult(new List<Rule>()).ConfigureAwait(false);
+            return await context.Rules.ToListAsync().ConfigureAwait(false);
         }
     }
 }

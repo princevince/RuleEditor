@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration.UserSecrets;
 
 namespace RuleEditor
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
@@ -18,12 +18,7 @@ namespace RuleEditor
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                })
-                .ConfigureAppConfiguration(config => {
-                    config.AddUserSecrets<DatabaseOptions>();
-                });
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
+                .ConfigureAppConfiguration(config => config.AddUserSecrets<DatabaseOptions>());
     }
 }
